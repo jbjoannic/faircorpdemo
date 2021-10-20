@@ -7,8 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface WindowDao extends JpaRepository<Window, Long> {
+
+    @Query("select w from Window w")
+    List<Window> findAll();
 
     @Query("select w from Window w where w.room.id = :id and w.windowStatus= com.emse.spring.faircorp.model.WindowStatus.OPEN")
     List<Window> findRoomOpenWindows(@Param("id") Long id);
