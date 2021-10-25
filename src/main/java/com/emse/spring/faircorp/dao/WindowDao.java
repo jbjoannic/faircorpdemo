@@ -14,6 +14,9 @@ public interface WindowDao extends JpaRepository<Window, Long> {
     @Query("select w from Window w")
     List<Window> findAll();
 
+    @Query("select w from Window w where w.room.id = :id")
+    List<Window> findByRoom(@Param("id") Long id);
+
     @Query("select w from Window w where w.room.id = :id and w.windowStatus= com.emse.spring.faircorp.model.WindowStatus.OPEN")
     List<Window> findRoomOpenWindows(@Param("id") Long id);
 
