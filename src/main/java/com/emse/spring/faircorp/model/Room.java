@@ -30,12 +30,16 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private Set<Window> window;
 
+    @ManyToOne
+    private Building building;
+
     public Room() {
     }
 
-    public Room(int floor, String name) {
+    public Room(int floor, String name, Building building) {
         this.floor = floor;
         this.name = name;
+        this.building = building;
     }
 
     public Long getId() {
@@ -92,5 +96,13 @@ public class Room {
 
     public void setWindow(Set<Window> window) {
         this.window = window;
+    }
+
+    public Building getBuilding() {
+        return this.building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 }
