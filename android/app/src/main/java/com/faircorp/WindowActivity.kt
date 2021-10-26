@@ -24,7 +24,7 @@ class WindowActivity : BasicActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
         val listArg: MutableList<String?> = mutableListOf()
-        
+
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().windowsApiService.findById(id).execute() } // (2)
                 .onSuccess {
