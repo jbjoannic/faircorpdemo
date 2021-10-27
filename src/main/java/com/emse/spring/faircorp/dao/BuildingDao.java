@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 public interface BuildingDao extends JpaRepository<Building, Long> {
-
 }
