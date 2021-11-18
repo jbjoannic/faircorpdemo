@@ -4,6 +4,7 @@ import com.emse.spring.faircorp.model.Building;
 
 public class BuildingDto {
     private Long id;
+    private String name;
     private Double outsideTemperature;
 
     public BuildingDto(){
@@ -12,6 +13,7 @@ public class BuildingDto {
     public BuildingDto(Building building){
         this.id = building.getId();
         this.outsideTemperature = building.getOutsideTemperature();
+        this.name = building.getName();
     }
 
     public Long getId() {
@@ -28,5 +30,11 @@ public class BuildingDto {
 
     public void setOutsideTemperature(Double outsideTemperature) {
         this.outsideTemperature = outsideTemperature;
+    }
+
+    public String getName() { return name; }
+
+    public void setName(String Name) {
+        this.name = name;
     }
 }

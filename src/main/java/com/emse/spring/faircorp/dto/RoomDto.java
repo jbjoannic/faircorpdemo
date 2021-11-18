@@ -9,6 +9,7 @@ public class RoomDto {
     private String name;
     private Double targetTemperature;
     private Long buildingId;
+    private String buildingName;
 
     public RoomDto(){
     }
@@ -19,6 +20,7 @@ public class RoomDto {
         this.name = room.getName();
         this.targetTemperature = room.getTargetTemperature();
         this.buildingId = room.getBuilding().getId();
+        this.buildingName = room.getBuilding().getName();
     }
 
     public Long getId() {
@@ -67,5 +69,13 @@ public class RoomDto {
 
     public void setBuildingId(Long buildingId) {
         this.buildingId = buildingId;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
     }
 }

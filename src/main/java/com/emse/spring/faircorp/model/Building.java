@@ -8,9 +8,14 @@ import java.util.Set;
 @Table(name="BUILDING")
 public class Building {
 
+
+
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(nullable = false)
+    private String name;
 
     @Column
     private Double outsideTemperature;
@@ -46,5 +51,13 @@ public class Building {
 
     public void setRoom(Set<Room> room) {
         this.room = room;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
