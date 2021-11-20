@@ -38,7 +38,7 @@ public class WindowController {
         return new WindowDto(window);
     }
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public WindowDto create(@RequestBody WindowDto dto){
         Room room = roomDao.getById(dto.getRoomId());
         Window window = null;
