@@ -14,4 +14,7 @@ public interface RoomDao extends JpaRepository<Room, Long> {
 
     @Query("select r.id from Room r where r.building.id = :id")
     List<Long> findIdByBuilding(@Param("id") Long id);
+
+    @Query("select r from Room r where r.building.id = :id")
+    List<Room> findByBuilding(@Param("id") Long id);
 }
