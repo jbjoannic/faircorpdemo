@@ -36,10 +36,12 @@ public class Room {
     public Room() {
     }
 
-    public Room(int floor, String name, Building building) {
+    public Room(int floor, String name, Building building, Double currentTemperature, Double targetTemperature) {
         this.floor = floor;
         this.name = name;
         this.building = building;
+        this.currentTemperature = currentTemperature;
+        this.targetTemperature = targetTemperature;
     }
 
     public Long getId() {
