@@ -14,7 +14,7 @@ public class Heater {
     private String name;
 
     @Column
-    private Long power;
+    private Double power;
 
     @ManyToOne
     private Room room;
@@ -25,10 +25,11 @@ public class Heater {
     public Heater() {
     }
 
-    public Heater(String name, Room room, Status status){
+    public Heater(String name, Room room, Status status, Double power){
         this.name=name;
         this.room=room;
         this.status=status;
+        this.power=power;
     }
 
     public Long getId() {
@@ -47,11 +48,11 @@ public class Heater {
         this.name = name;
     }
 
-    public Long getPower() {
+    public Double getPower() {
         return power;
     }
 
-    public void setPower(Long power) {
+    public void setPower(Double power) {
         this.power = power;
     }
 
