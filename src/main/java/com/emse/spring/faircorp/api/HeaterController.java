@@ -38,7 +38,7 @@ public class HeaterController {
         return new HeaterDto(heater);
     }
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public HeaterDto create(@RequestBody HeaterDto dto){
         Room room = roomDao.getById(dto.getRoomId());
         Heater heater = null;

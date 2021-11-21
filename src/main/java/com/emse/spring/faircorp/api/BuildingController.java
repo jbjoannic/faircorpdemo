@@ -39,7 +39,7 @@ public class BuildingController {
         return buildingDao.findById(id).map(BuildingDto::new).orElse(null);
     }
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public BuildingDto create(@RequestBody BuildingDto dto) {
         Building building = null;
         if (dto.getId() == null) {

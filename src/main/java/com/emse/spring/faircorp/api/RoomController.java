@@ -42,9 +42,13 @@ public class RoomController {
         return roomDao.findById(id).map(RoomDto::new).orElse(null);
     }
 
+    @GetMapping(path="/{id}/windows")
+    public List<WindowDto> findWindowsByRoom(@PathVariable Long id) { return windowDao.findByRoom(id).stream().map(WindowDto::new).collect(Collectors.toList());}
 
+    @GetMapping(path="/{id}/heaters")
+    public List<HeaterDto> findHeatersByRoom(@PathVariable Long id) { return heaterDao.findByRoom(id).stream().map(HeaterDto::new).collect(Collectors.toList());}
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public RoomDto create(@RequestBody RoomDto dto){
         Building building = buildingDao.getById(dto.getBuildingId());
         Room room = null;
