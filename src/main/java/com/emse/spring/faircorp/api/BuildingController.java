@@ -40,13 +40,13 @@ public class BuildingController {
     }
 
     @PostMapping(path = "/create")
-    public BuildingDto create(@RequestBody BuildingDto dto) {
+    public BuildingDto create(@RequestBody BuildingDto buildingDto) {
         Building building = null;
-        if (dto.getId() == null) {
-            building = buildingDao.save(new Building(dto.getOutsideTemperature()));
+        if (buildingDto.getId() == null) {
+            building = buildingDao.save(new Building(buildingDto.getName(), buildingDto.getOutsideTemperature()));
         } else {
-            building = buildingDao.getById(dto.getId());
-            building.setOutsideTemperature(dto.getOutsideTemperature());
+            building = buildingDao.getById(buildingDto.getId());
+            building.setOutsideTemperature(buildingDto.getOutsideTemperature());
         }
         return new BuildingDto(building);
     }
