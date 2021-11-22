@@ -5,14 +5,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="ROOM")
+@Table(name = "ROOM")
 public class Room {
 
     @Id
     @GeneratedValue
     private Long Id;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private int floor;
 
     @Column(nullable = false)

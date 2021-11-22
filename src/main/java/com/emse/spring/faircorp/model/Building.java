@@ -5,9 +5,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="BUILDING")
+@Table(name = "BUILDING")
 public class Building {
-
 
 
     @Id
@@ -23,14 +22,15 @@ public class Building {
     @OneToMany(mappedBy = "building")
     private Set<Room> room;
 
-    public Building(){
+    public Building() {
     }
 
-    public Building(String name, Double outsideTemperature){
+    public Building(String name, Double outsideTemperature) {
         this.name = name;
         this.outsideTemperature = outsideTemperature;
     }
-    public Long getId(){
+
+    public Long getId() {
         return this.id;
     }
 

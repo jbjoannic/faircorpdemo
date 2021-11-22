@@ -34,12 +34,12 @@ public class WindowController {
     @PutMapping(path = "/{id}/switch")
     public WindowDto switchStatus(@PathVariable Long id) {
         Window window = windowDao.findById(id).orElseThrow(IllegalArgumentException::new);
-        window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED: WindowStatus.OPEN);
+        window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED : WindowStatus.OPEN);
         return new WindowDto(window);
     }
 
     @PostMapping(path = "/create")
-    public WindowDto create(@RequestBody WindowDto dto){
+    public WindowDto create(@RequestBody WindowDto dto) {
         Room room = roomDao.getById(dto.getRoomId());
         Window window = null;
 
@@ -53,12 +53,12 @@ public class WindowController {
     }
 
     @DeleteMapping(path = "/{id}/delete")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         windowDao.deleteById(id);
     }
 
     @GetMapping(path = "/{id}")
-    public WindowDto findById(@PathVariable Long id){
+    public WindowDto findById(@PathVariable Long id) {
         return windowDao.findById(id).map(WindowDto::new).orElse(null);
     }
 }

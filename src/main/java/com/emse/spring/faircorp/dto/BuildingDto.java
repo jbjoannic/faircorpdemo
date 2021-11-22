@@ -7,10 +7,10 @@ public class BuildingDto {
     private String name;
     private Double outsideTemperature;
 
-    public BuildingDto(){
+    public BuildingDto() {
     }
 
-    public BuildingDto(Building building){
+    public BuildingDto(Building building) {
         this.id = building.getId();
         this.outsideTemperature = building.getOutsideTemperature();
         this.name = building.getName();

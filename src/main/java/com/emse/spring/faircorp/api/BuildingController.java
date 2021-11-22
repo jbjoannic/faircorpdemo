@@ -6,7 +6,6 @@ import com.emse.spring.faircorp.dao.RoomDao;
 import com.emse.spring.faircorp.dao.WindowDao;
 import com.emse.spring.faircorp.dto.BuildingDto;
 import com.emse.spring.faircorp.dto.RoomDto;
-import com.emse.spring.faircorp.dto.WindowDto;
 import com.emse.spring.faircorp.model.Building;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +40,10 @@ public class BuildingController {
         return buildingDao.findById(id).map(BuildingDto::new).orElse(null);
     }
 
-    @GetMapping(path="/{id}/rooms")
-    public List<RoomDto> findRoomsByBuilding(@PathVariable Long id) { return roomDao.findByBuilding(id).stream().map(RoomDto::new).collect(Collectors.toList());}
+    @GetMapping(path = "/{id}/rooms")
+    public List<RoomDto> findRoomsByBuilding(@PathVariable Long id) {
+        return roomDao.findByBuilding(id).stream().map(RoomDto::new).collect(Collectors.toList());
+    }
 
     @PostMapping(path = "/create")
     public BuildingDto create(@RequestBody BuildingDto buildingDto) {
@@ -57,7 +58,7 @@ public class BuildingController {
     }
 
     @DeleteMapping(path = "/{id}/delete")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         List<Long> idRooms = roomDao.findIdByBuilding(id);
         for (Long idRoom : idRooms) {
             windowDao.deleteByRoom(idRoom);

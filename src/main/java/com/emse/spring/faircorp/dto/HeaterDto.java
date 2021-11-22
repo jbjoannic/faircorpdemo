@@ -12,7 +12,7 @@ public class HeaterDto {
     private String roomName;
     private Long roomId;
 
-    public HeaterDto(){
+    public HeaterDto() {
     }
 
     public HeaterDto(Heater heater) {

@@ -21,30 +21,30 @@ public class HeaterController {
     private final HeaterDao heaterDao;
     private final RoomDao roomDao;
 
-    public HeaterController(HeaterDao heaterDao, RoomDao roomDao){
+    public HeaterController(HeaterDao heaterDao, RoomDao roomDao) {
         this.heaterDao = heaterDao;
         this.roomDao = roomDao;
     }
 
     @GetMapping
-    public List<HeaterDto> findAll(){
+    public List<HeaterDto> findAll() {
         return heaterDao.findAll().stream().map(HeaterDto::new).collect(Collectors.toList());
     }
 
     @PutMapping(path = "/{id}/switch")
-    public HeaterDto switchStatus(@PathVariable Long id){
+    public HeaterDto switchStatus(@PathVariable Long id) {
         Heater heater = heaterDao.findById(id).orElseThrow(IllegalArgumentException::new);
-        heater.setStatus(heater.getStatus() == Status.ON ? Status.OFF: Status.ON);
+        heater.setStatus(heater.getStatus() == Status.ON ? Status.OFF : Status.ON);
         return new HeaterDto(heater);
     }
 
     @PostMapping(path = "/create")
-    public HeaterDto create(@RequestBody HeaterDto dto){
+    public HeaterDto create(@RequestBody HeaterDto dto) {
         Room room = roomDao.getById(dto.getRoomId());
         Heater heater = null;
 
         if (dto.getId() == null) {
-            heater = heaterDao.save(new Heater(dto.getName(), room, dto.getHeaterStatus(),dto.getPower()));
+            heater = heaterDao.save(new Heater(dto.getName(), room, dto.getHeaterStatus(), dto.getPower()));
         } else {
             heater = heaterDao.getById(dto.getId());
             heater.setStatus(dto.getHeaterStatus());

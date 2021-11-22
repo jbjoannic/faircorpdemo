@@ -42,14 +42,18 @@ public class RoomController {
         return roomDao.findById(id).map(RoomDto::new).orElse(null);
     }
 
-    @GetMapping(path="/{id}/windows")
-    public List<WindowDto> findWindowsByRoom(@PathVariable Long id) { return windowDao.findByRoom(id).stream().map(WindowDto::new).collect(Collectors.toList());}
+    @GetMapping(path = "/{id}/windows")
+    public List<WindowDto> findWindowsByRoom(@PathVariable Long id) {
+        return windowDao.findByRoom(id).stream().map(WindowDto::new).collect(Collectors.toList());
+    }
 
-    @GetMapping(path="/{id}/heaters")
-    public List<HeaterDto> findHeatersByRoom(@PathVariable Long id) { return heaterDao.findByRoom(id).stream().map(HeaterDto::new).collect(Collectors.toList());}
+    @GetMapping(path = "/{id}/heaters")
+    public List<HeaterDto> findHeatersByRoom(@PathVariable Long id) {
+        return heaterDao.findByRoom(id).stream().map(HeaterDto::new).collect(Collectors.toList());
+    }
 
     @PostMapping(path = "/create")
-    public RoomDto create(@RequestBody RoomDto dto){
+    public RoomDto create(@RequestBody RoomDto dto) {
         Building building = buildingDao.getById(dto.getBuildingId());
         Room room = null;
 
@@ -73,7 +77,7 @@ public class RoomController {
     public List<WindowDto> switchWindowStatus(@PathVariable Long id) {
         List<Window> windows = windowDao.findByRoom(id);
         for (Window window : windows) {
-            window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED: WindowStatus.OPEN);
+            window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED : WindowStatus.OPEN);
         }
         return windows.stream().map(WindowDto::new).collect(Collectors.toList());
     }
@@ -82,7 +86,7 @@ public class RoomController {
     public List<HeaterDto> switchHeaterStatus(@PathVariable Long id) {
         List<Heater> heaters = heaterDao.findByRoom(id);
         for (Heater heater : heaters) {
-            heater.setStatus(heater.getStatus() == Status.ON ? Status.OFF: Status.ON);
+            heater.setStatus(heater.getStatus() == Status.ON ? Status.OFF : Status.ON);
         }
         return heaters.stream().map(HeaterDto::new).collect(Collectors.toList());
     }
